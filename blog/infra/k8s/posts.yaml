@@ -5,5 +5,4 @@ metadata:
 spec:
   containers:
     - name: posts
-      image: cygnet/posts:0.0.1
-      imagePullPolicy: Never
+      image: 404th/blog/posts:0.0.1
