@@ -43,5 +43,6 @@ app.post("/events", (req, res) => {
 });
 
 app.listen(4000, () => {
+	console.log("new changes in posts");
 	console.log("'posts' is running || PORT:4000");
 });
