@@ -17,18 +17,22 @@ app.post("/events", async (req, res) => {
 		.catch((err) => {
 			console.log(err);
 		});
-	// // posts
-	// await axios.post("http://localhost:4001/events", event).catch((err) => {
-	// 	console.log(err);
-	// });
-	// // comments
-	// await axios.post("http://localhost:4002/events", event).catch((err) => {
-	// 	console.log(err);
-	// });
-	// // moderation
-	// await axios.post("http://localhost:4003/events", event).catch((err) => {
-	// 	console.log(err);
-	// });
+	// posts
+	await axios
+		.post("http://comments-clusterip-srv:4001/events", event)
+		.catch((err) => {
+			console.log(err);
+		});
+	// comments
+	await axios.post("http://query-srv:4002/events", event).catch((err) => {
+		console.log(err);
+	});
+	// moderation
+	await axios
+		.post("http://moderation-srv:4003/events", event)
+		.catch((err) => {
+			console.log(err);
+		});
 
 	res.send({ status: "OK" });
 });
