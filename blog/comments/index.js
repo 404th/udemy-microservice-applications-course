@@ -2,8 +2,8 @@ const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
 const { randomBytes } = require("crypto");
-const app = express();
 
+const app = express();
 app.use(express.json());
 app.use(cors());
 
@@ -15,6 +15,8 @@ app.get("/posts/:id/comments", (req, res) => {
 
 app.post("/posts/:id/comments", async (req, res) => {
 	const randomId = randomBytes(4).toString("hex");
+
+	console.log("comment is creating!");
 
 	const { content } = req.body;
 
@@ -38,11 +40,15 @@ app.post("/posts/:id/comments", async (req, res) => {
 			console.log(err);
 		});
 
-	res.status(201).send(comments);
+	res.status(201).json(comments);
 });
 
 app.post("/events", async (req, res) => {
 	const { type, data } = req.body;
+
+	console.log("Hello world I am here in console inside /events");
+	console.log(req.body);
+	console.log("data in moderation", data);
 
 	if (type === "CommentModerated") {
 		const { postId, id, status, content } = data;
@@ -56,7 +62,7 @@ app.post("/events", async (req, res) => {
 				id,
 				postId,
 				content,
-				status,
+				status: comment.status,
 			},
 		});
 	}

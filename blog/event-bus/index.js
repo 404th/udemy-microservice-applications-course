@@ -43,6 +43,6 @@ app.get("/events", (req, res) => {
 });
 
 app.listen(4005, () => {
-	console.log("'event-bus' has been changes!");
+	console.log("'event-bus' has been changed!");
 	console.log("'event-bus' is running || PORT:4005");
 });
