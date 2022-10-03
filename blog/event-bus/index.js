@@ -12,18 +12,19 @@ app.post("/events", async (req, res) => {
 
 	events.push(event);
 
+	// posts
 	await axios
 		.post("http://posts-clusterip-srv:4000/events", event)
 		.catch((err) => {
 			console.log(err);
 		});
-	// posts
+	// comments
 	await axios
 		.post("http://comments-clusterip-srv:4001/events", event)
 		.catch((err) => {
 			console.log(err);
 		});
-	// comments
+	// query
 	await axios.post("http://query-srv:4002/events", event).catch((err) => {
 		console.log(err);
 	});
