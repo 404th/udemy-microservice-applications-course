@@ -16,8 +16,6 @@ app.get("/posts/:id/comments", (req, res) => {
 app.post("/posts/:id/comments", async (req, res) => {
 	const randomId = randomBytes(4).toString("hex");
 
-	console.log("comment is creating!");
-
 	const { content } = req.body;
 
 	comments = commentsByPostID[req.params.id] || [];
@@ -46,10 +44,6 @@ app.post("/posts/:id/comments", async (req, res) => {
 app.post("/events", async (req, res) => {
 	const { type, data } = req.body;
 
-	console.log("Hello world I am here in console inside /events");
-	console.log(req.body);
-	console.log("data in moderation", data);
-
 	if (type === "CommentModerated") {
 		const { postId, id, status, content } = data;
 		const comments = commentsByPostID[postId];
@@ -66,8 +60,6 @@ app.post("/events", async (req, res) => {
 			},
 		});
 	}
-
-	console.log("Event type: ", type);
 	res.send({});
 });
 

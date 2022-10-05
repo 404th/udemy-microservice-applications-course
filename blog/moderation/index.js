@@ -8,22 +8,12 @@ app.use(express.json());
 app.post("/events", async (req, res) => {
 	const { type, data } = req.body;
 
-	console.log("Moderation => ", type);
-
 	if (type === "CommentCreated") {
 		const status = data.content.includes("orange")
 			? "rejected"
 			: "approved";
 
 		await axios.post("http://event-bus-clusterip-srv:4005/events", {
-			type: "CommentModerated",
-			data: {
-				...data,
-				status: status,
-			},
-		});
-
-		console.log({
 			type: "CommentModerated",
 			data: {
 				...data,

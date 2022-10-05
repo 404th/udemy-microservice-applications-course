@@ -16,23 +16,23 @@ app.post("/events", async (req, res) => {
 	await axios
 		.post("http://posts-clusterip-srv:4000/events", event)
 		.catch((err) => {
-			console.log(err);
+			console.error(err);
 		});
 	// comments
 	await axios
 		.post("http://comments-clusterip-srv:4001/events", event)
 		.catch((err) => {
-			console.log(err);
+			console.error(err);
 		});
 	// query
 	await axios.post("http://query-srv:4002/events", event).catch((err) => {
-		console.log(err);
+		console.error(err);
 	});
 	// moderation
 	await axios
 		.post("http://moderation-srv:4003/events", event)
 		.catch((err) => {
-			console.log(err);
+			console.error(err);
 		});
 
 	res.send({ status: "OK" });
@@ -43,6 +43,5 @@ app.get("/events", (req, res) => {
 });
 
 app.listen(4005, () => {
-	console.log("'event-bus' has been changed!");
 	console.log("'event-bus' is running || PORT:4005");
 });
