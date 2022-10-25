@@ -48,7 +48,11 @@ app.post("/events", (req, res) => {
 app.listen(4002, async () => {
 	console.log("'query' is running || PORT:4002");
 
-	const res = await axios.get("http://event-bus-clusterip-srv:4005/events");
+	const res = await axios
+		.get("http://event-bus-clusterip-srv:4005/events")
+		.catch((err) => {
+			console.error(err);
+		});
 
 	for (let event of res.data) {
 		handleEvent(event.type, event.data);

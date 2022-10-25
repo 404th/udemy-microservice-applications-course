@@ -1,5 +1,6 @@
-FROM node:16-alpine
+FROM node:current-alpine3.16
 
+ENV NODE_OPTIONS="--openssl-legacy-provider"
 ENV CI=true
 ENV WDS_SOCKET_PORT=0
 
