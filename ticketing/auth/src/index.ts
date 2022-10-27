@@ -4,7 +4,7 @@ const app = express()
 app.use(json())
 
 app.get("/api/users/currentuser", (req, res) => {
-    res.send("Hi theredagilar!")
+    res.send("Hi there!")
 })
 
 const AUTH_SERVICE_PORT = 3000
