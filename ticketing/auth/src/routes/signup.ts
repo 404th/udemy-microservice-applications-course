@@ -17,8 +17,6 @@ router.post("/api/users/signup", [
     
     console.log("Creating user...")
     throw new DatabaseConnectionError()
-
-    res.send({})
 })
 
 export { router as signupRouter }
