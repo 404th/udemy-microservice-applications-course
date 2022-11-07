@@ -37,3 +37,5 @@ const start = async () => {
         console.log(`'auth service' is listening on PORT:${ AUTH_SERVICE_PORT }`)
     } )
 }
+
+start()
