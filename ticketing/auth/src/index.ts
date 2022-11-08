@@ -1,5 +1,5 @@
 import express, { json } from "express"
-import "express-async-errors";
+import "express-async-errors"
 import mongoose from "mongoose"
 
 import { currentUserRouter } from "./routes/current-user"
